@@ -7,6 +7,13 @@ Examples:
 
 */
 function doubleValues(arr){
+    let doubledArray = [];
+    
+    for (i = 0; i < arr.length; i++) {
+        doubledArray.push(arr[i] * 2);
+    }
+
+    return doubledArray;
     
 }
 
@@ -19,6 +26,15 @@ Examples:
 
 */
 function onlyEvenValues(arr){
+    let evenArray = [];
+
+    arr.forEach(element => {
+        if(element % 2 == 0) {
+            evenArray.push(element);
+        }
+    });
+
+    return evenArray;
     
 }
 
@@ -31,7 +47,13 @@ Examples:
 
 */
 function showFirstAndLast(arr){
-    
+    let firstLast = [];
+  
+    arr.forEach(element => {
+        firstLast.push(element[0] + element[element.length - 1]);
+    });
+
+    return firstLast;
 }
 
 /*
@@ -44,7 +66,15 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    
+    let item;
+    let newKey = [];
+    arr.forEach(element => {
+        item = element;
+        item[key] = value;
+        newKey.push(item);
+    });
+
+    return newKey;
 }
 
 /*
@@ -58,7 +88,40 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
-   
+    let vowels = [Object];
+
+    let lowerCase = str.toLowerCase();
+    let item = Object;
+
+    for(i = 0; i < lowerCase.length; i++) {
+
+        if(isVowel(lowerCase[i])){
+            console.log(`Passed vowel check for ${lowerCase[i]}`);
+
+            if (i > 0) {
+                console.log('Trying to add to list');
+                for (y = 0; y< vowels.length; y++) {
+                    if(lowerCase[i] in vowels[y]) {
+                        vowels[y][lowerCase[i]] += 1;
+                    }
+                }
+            } else {
+                item[lowerCase[i]] = 1;
+                console.log(item);
+                vowels.push(item); 
+            }
+        }
+    }
+    return vowels;
+}
+
+//Helper function for large if statement.
+function isVowel (str) {
+    if (str == 'a' || str == 'e' || str == 'i' || str == 'o' || str == 'u') {
+        return true;
+    }
+
+    return false;
 }
 
 /*
@@ -75,6 +138,7 @@ function doubleValuesWithMap(arr) {}
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
 
 Examples:
+
     valTimesIndex([1,2,3]) // [0,2,6]
     valTimesIndex([1,-2,-3]) // [0,-2,-6]
 */
